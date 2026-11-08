@@ -93,13 +93,18 @@ const CONFIG = {
   currency: "ETB",
   payment: [
     { label: "Telebirr", account: "0940218953", holder: "Simera" },
-    { label: "CBE", account: "1000260762668", holder: "Alex" }
+    { label: "CBE", account: "1000XXXXXXXXX", holder: "Your Name" }
   ],
   // Owner mode is hidden from everyone except you.
   // 1) Put your Telegram numeric ID here (get it from @userinfobot), e.g. [123456789]
-  ownerTelegramIds: [1193235776,1922736182],
+  ownerTelegramIds: [1193235776],
   // 2) Backup way in: tap the shop title 7 times, then enter this PIN. Change it!
   ownerPin: "4042",
+  // Publishing: where your products.json lives on GitHub
+  githubOwner: "alexatb",
+  githubRepo: "S-shopping",
+  githubBranch: "main",
+  githubPath: "products.json",
   productsFile: "products.json"   // the file this page loads products from
 };
 
@@ -132,6 +137,7 @@ const myTelegramId = tg && tg.initDataUnsafe && tg.initDataUnsafe.user ? tg.init
 const canOwner = () => (myTelegramId !== null && CONFIG.ownerTelegramIds.includes(myTelegramId)) || recall("ownerUnlocked") === "1";
 ownerMode = recall("ownerMode") === "1" && canOwner();
 pending = recall("ownerPending") === "1";
+let ghToken = recall("ghToken") || "";
 const saveCart = () => store("cart", JSON.stringify(cart));
 
 const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
@@ -184,9 +190,11 @@ function go(v) { view = v; render(); window.scrollTo(0, 0); }
 function ownerPanel() {
   if (!ownerMode) return "";
   const state = pending
-    ? `<p class="pending">You have changes that customers can’t see yet. Export the file and upload it to your hosting.</p>`
+    ? `<p class="pending">You have changes that customers can’t see yet. Tap Publish to save them to your shop.</p>`
     : `<p>Owner mode. Customers see the products from your uploaded file.</p>`;
   return `<div class="panel">${state}
+    <button class="primary center" style="margin-top:8px" data-act="publish">${ghToken ? "Publish to my shop" : "Set up publishing"}</button>
+    ${ghToken ? `<button class="secondary" data-act="removetoken">Remove saved token from this device</button>` : ""}
     <button class="secondary" data-act="download">Download products file</button>
     <button class="secondary" data-act="copyfile">Copy file text</button>
     <button class="secondary" data-act="resync">Discard my changes and reload published list</button></div>`;
@@ -280,7 +288,7 @@ function newProductView() {
 
 /* ---------- render ---------- */
 function render() {
-  const views = { shop: shopView, cart: cartView, checkout: checkoutView, done: doneView, newproduct: newProductView, pin: pinView };
+  const views = { shop: shopView, cart: cartView, checkout: checkoutView, done: doneView, newproduct: newProductView, pin: pinView, token: tokenView };
   $app.innerHTML = views[view]();
   if (tg) {
     if (view === "shop") tg.BackButton.hide(); else if (view !== "done") tg.BackButton.show();
@@ -393,7 +401,7 @@ function addProduct() {
   pending = true; persistOwner();
   draft = { name: "", price: "", descr: "", image: "" };
   go("shop");
-  toast("Added. Export the file to publish it.");
+  toast("Added. Tap Publish to show it to customers.");
 }
 
 function deleteProduct(id) {
@@ -422,6 +430,64 @@ async function resync() {
   ownerList = clone(published);
   persistOwner(); render();
   toast("Reloaded from the published list");
+}
+
+/* ---------- publishing to GitHub ---------- */
+function tokenView() {
+  return `<div class="view"><button class="back" data-act="shop">‹ Back to shop</button><h2>Publishing token</h2>
+    <p style="color:var(--hint);font-size:0.9rem">Paste your GitHub token once. It stays on this device only.</p>
+    <label for="f-token">GitHub token</label><input id="f-token" type="password" autocomplete="off">
+    <div class="err" id="e-token"></div>
+    <button class="primary center" style="margin-top:8px" data-act="savetoken">Save token</button></div>`;
+}
+function saveToken() {
+  const t = document.getElementById("f-token").value.trim();
+  if (t.length < 20) { document.getElementById("e-token").textContent = "Paste the full token."; return; }
+  ghToken = t; store("ghToken", t);
+  go("shop"); toast("Token saved. Tap Publish.");
+}
+function removeToken() {
+  ghToken = "";
+  try { localStorage.removeItem("ghToken"); } catch (e) {}
+  render(); toast("Token removed from this device");
+}
+
+const ghUrl = () => "https://api.github.com/repos/" + encodeURIComponent(CONFIG.githubOwner) + "/" + encodeURIComponent(CONFIG.githubRepo) + "/contents/" + CONFIG.githubPath.split("/").map(encodeURIComponent).join("/");
+const ghHeaders = () => ({ Authorization: "Bearer " + ghToken, Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" });
+function toBase64(text) {
+  const bytes = new TextEncoder().encode(text);
+  let bin = "";
+  for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+  return btoa(bin);
+}
+
+let publishing = false;
+async function publish() {
+  if (publishing) return;
+  if (!ghToken) { go("token"); return; }
+  if (!CONFIG.githubOwner || CONFIG.githubOwner.indexOf("YOUR-") === 0 || CONFIG.githubRepo.indexOf("YOUR-") === 0) {
+    toast("Set githubOwner and githubRepo in the file first"); return;
+  }
+  publishing = true; toast("Publishing…");
+  try {
+    let sha;
+    const g = await fetch(ghUrl() + "?ref=" + encodeURIComponent(CONFIG.githubBranch), { headers: ghHeaders(), cache: "no-store" });
+    if (g.ok) sha = (await g.json()).sha;
+    else if (g.status !== 404) throw { status: g.status };
+    const body = { message: "Update products from shop", content: toBase64(fileText()), branch: CONFIG.githubBranch };
+    if (sha) body.sha = sha;
+    const p = await fetch(ghUrl(), { method: "PUT", headers: { ...ghHeaders(), "Content-Type": "application/json" }, body: JSON.stringify(body) });
+    if (!p.ok) throw { status: p.status };
+    published = clone(ownerList); pending = false; persistOwner(); render();
+    toast("Published. Customers see it in 1–2 minutes.");
+  } catch (e) {
+    const s = e && e.status;
+    if (s === 401) toast("GitHub does not accept the token. Set it up again.");
+    else if (s === 403 || s === 404) toast("The token cannot write to this repository. Check its permissions and the settings in the file.");
+    else if (s === 409 || s === 422) toast("The file changed on GitHub. Reload the published list and try again.");
+    else toast("Could not publish. Check your connection.");
+  }
+  publishing = false;
 }
 
 /* ---------- helpers ---------- */
@@ -459,6 +525,9 @@ $app.addEventListener("click", e => {
   else if (act === "send") sendToSeller();
   else if (act === "new") go("shop");
   else if (act === "reload") loadPublished();
+  else if (act === "publish") publish();
+  else if (act === "savetoken") saveToken();
+  else if (act === "removetoken") removeToken();
   else if (act === "secret") secretTap();
   else if (act === "unlock") unlock();
   else if (act === "ownerOn") setOwner(true);
