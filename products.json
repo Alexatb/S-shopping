@@ -1,0 +1,58 @@
+[
+ {
+  "id": "c1",
+  "name": "Matte Lipstick – Rose Berry",
+  "price": 450,
+  "descr": "Long-lasting matte color, 3.5g. Smooth, non-drying finish.",
+  "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2ZkZTRlYSIvPgo8cmVjdCB4PSI3OCIgeT0iMTA1IiB3aWR0aD0iNDQiIGhlaWdodD0iNjIiIHJ4PSI2IiBmaWxsPSIjMmIyYjMzIi8+CjxyZWN0IHg9Ijc0IiB5PSI5NSIgd2lkdGg9IjUyIiBoZWlnaHQ9IjE2IiByeD0iNCIgZmlsbD0iI2M5YTE0YSIvPgo8cGF0aCBkPSJNODYgOTUgVjU2IFExMDAgMzggMTE0IDU2IFY5NSBaIiBmaWxsPSIjYzIxODViIi8+CjxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxNzYiIHJ4PSI0MCIgcnk9IjYiIGZpbGw9IiMwMDAwMDAxNCIvPjwvc3ZnPg=="
+ },
+ {
+  "id": "c2",
+  "name": "Eau de Parfum – Floral 50ml",
+  "price": 1800,
+  "descr": "Soft floral scent with a light musk base. Lasts 6–8 hours.",
+  "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2U4ZTRmYiIvPgo8cmVjdCB4PSI4OCIgeT0iMzAiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyMiIgcng9IjQiIGZpbGw9IiNjOWExNGEiLz4KPHJlY3QgeD0iOTQiIHk9IjUwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIGZpbGw9IiM4ZDhhYTgiLz4KPHJlY3QgeD0iNTYiIHk9IjYyIiB3aWR0aD0iODgiIGhlaWdodD0iMTAwIiByeD0iMTYiIGZpbGw9IiNiOWE4ZjAiIHN0cm9rZT0iIzdkNmJkMCIgc3Ryb2tlLXdpZHRoPSIzIi8+CjxyZWN0IHg9Ijc2IiB5PSI5MiIgd2lkdGg9IjQ4IiBoZWlnaHQ9IjM0IiByeD0iNCIgZmlsbD0iI2ZmZmZmZmNjIi8+CjxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxNzYiIHJ4PSI0NiIgcnk9IjYiIGZpbGw9IiMwMDAwMDAxNCIvPjwvc3ZnPg=="
+ },
+ {
+  "id": "c3",
+  "name": "Moisturizing Face Cream 50ml",
+  "price": 650,
+  "descr": "Daily cream for dry and normal skin. Non-greasy, absorbs quickly.",
+  "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2UzZjRlYyIvPgo8cmVjdCB4PSI1MiIgeT0iODYiIHdpZHRoPSI5NiIgaGVpZ2h0PSI2NiIgcng9IjEyIiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiM3Y2I4OWIiIHN0cm9rZS13aWR0aD0iMyIvPgo8cmVjdCB4PSI0NiIgeT0iNjQiIHdpZHRoPSIxMDgiIGhlaWdodD0iMzAiIHJ4PSIxMCIgZmlsbD0iIzRmOWU3YiIvPgo8cmVjdCB4PSI3MiIgeT0iMTA2IiB3aWR0aD0iNTYiIGhlaWdodD0iMjYiIHJ4PSI0IiBmaWxsPSIjZTNmNGVjIi8+CjxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxNjQiIHJ4PSI1MiIgcnk9IjYiIGZpbGw9IiMwMDAwMDAxNCIvPjwvc3ZnPg=="
+ },
+ {
+  "id": "c4",
+  "name": "Vitamin C Serum 30ml",
+  "price": 950,
+  "descr": "Brightening serum for an even skin tone. Use in the morning.",
+  "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2ZmZjFkNiIvPgo8cmVjdCB4PSI5MCIgeT0iMjQiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMiIgcng9IjYiIGZpbGw9IiMyYjJiMzMiLz4KPHBhdGggZD0iTTg0IDQ2IEgxMTYgVjcwIEg4NCBaIiBmaWxsPSIjYzlhMTRhIi8+CjxyZWN0IHg9IjY0IiB5PSI3MCIgd2lkdGg9IjcyIiBoZWlnaHQ9IjkyIiByeD0iMTQiIGZpbGw9IiNmNWM3NmEiIHN0cm9rZT0iI2Q5OWExZiIgc3Ryb2tlLXdpZHRoPSIzIi8+CjxyZWN0IHg9IjgwIiB5PSI5OCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjI4IiByeD0iNCIgZmlsbD0iI2ZmZmZmZmNjIi8+CjxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxNzQiIHJ4PSI0MiIgcnk9IjYiIGZpbGw9IiMwMDAwMDAxNCIvPjwvc3ZnPg=="
+ },
+ {
+  "id": "c5",
+  "name": "Nail Polish – Classic Red",
+  "price": 180,
+  "descr": "Glossy, quick-dry color. 12ml bottle.",
+  "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2ZmZTFlMSIvPgo8cmVjdCB4PSI4OCIgeT0iMjYiIHdpZHRoPSIyNCIgaGVpZ2h0PSI1MiIgcng9IjYiIGZpbGw9IiMyYjJiMzMiLz4KPHJlY3QgeD0iNjAiIHk9Ijc4IiB3aWR0aD0iODAiIGhlaWdodD0iODQiIHJ4PSIxNiIgZmlsbD0iI2U1MzkzNSIgc3Ryb2tlPSIjYTgyNDIxIiBzdHJva2Utd2lkdGg9IjMiLz4KPHJlY3QgeD0iNzYiIHk9Ijk2IiB3aWR0aD0iMTQiIGhlaWdodD0iNDAiIHJ4PSI3IiBmaWxsPSIjZmZmZmZmNTUiLz4KPGVsbGlwc2UgY3g9IjEwMCIgY3k9IjE3NCIgcng9IjQ0IiByeT0iNiIgZmlsbD0iIzAwMDAwMDE0Ii8+PC9zdmc+"
+ },
+ {
+  "id": "c6",
+  "name": "Compact Face Powder",
+  "price": 520,
+  "descr": "Light coverage, natural finish. Includes mirror and sponge.",
+  "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y2ZTZkYSIvPgo8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjY0IiBmaWxsPSIjMmIyYjMzIi8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iNTIiIGZpbGw9IiNlOGMzYTAiLz4KPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIzNiIgZmlsbD0iI2YxZDNiNSIvPgo8cGF0aCBkPSJNNzAgODIgUTEwMCA2MiAxMzAgODIiIHN0cm9rZT0iI2ZmZmZmZjg4IiBzdHJva2Utd2lkdGg9IjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg=="
+ },
+ {
+  "id": "c7",
+  "name": "Volumizing Mascara – Black",
+  "price": 380,
+  "descr": "Lengthens and separates lashes. Smudge-resistant.",
+  "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2U3ZWNmNSIvPgo8cmVjdCB4PSI5MiIgeT0iMjQiIHdpZHRoPSIxNiIgaGVpZ2h0PSI3NiIgcng9IjYiIGZpbGw9IiMyYjJiMzMiLz4KPGcgc3Ryb2tlPSIjMmIyYjMzIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+PHBhdGggZD0iTTEwMCAzMCBsLTEwIDQgTTEwMCA0MCBsLTEwIDQgTTEwMCA1MCBsLTEwIDQgTTEwMCA2MCBsLTEwIDQgTTEwMCA3MCBsLTEwIDQgTTEwMCAzMCBsMTAgNCBNMTAwIDQwIGwxMCA0IE0xMDAgNTAgbDEwIDQgTTEwMCA2MCBsMTAgNCBNMTAwIDcwIGwxMCA0Ii8+PC9nPgo8cmVjdCB4PSI3NiIgeT0iMTAwIiB3aWR0aD0iNDgiIGhlaWdodD0iNjYiIHJ4PSI4IiBmaWxsPSIjMzk0OWFiIi8+CjxyZWN0IHg9Ijc2IiB5PSIxMTYiIHdpZHRoPSI0OCIgaGVpZ2h0PSI4IiBmaWxsPSIjYzlhMTRhIi8+CjxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxNzYiIHJ4PSIzOCIgcnk9IjYiIGZpbGw9IiMwMDAwMDAxNCIvPjwvc3ZnPg=="
+ },
+ {
+  "id": "c8",
+  "name": "Body Lotion 250ml",
+  "price": 420,
+  "descr": "Shea butter lotion for soft skin all day. Mild fragrance.",
+  "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2UwZjJmNyIvPgo8cmVjdCB4PSI4NCIgeT0iMjQiIHdpZHRoPSIzMiIgaGVpZ2h0PSIyNCIgcng9IjYiIGZpbGw9IiMyYjJiMzMiLz4KPHJlY3QgeD0iOTIiIHk9IjQ2IiB3aWR0aD0iMTYiIGhlaWdodD0iMTIiIGZpbGw9IiM4YWE5YjMiLz4KPHJlY3QgeD0iNjAiIHk9IjU4IiB3aWR0aD0iODAiIGhlaWdodD0iMTA4IiByeD0iMTYiIGZpbGw9IiNmZmZmZmYiIHN0cm9rZT0iIzRmYTZiZiIgc3Ryb2tlLXdpZHRoPSIzIi8+CjxyZWN0IHg9IjcyIiB5PSI4NiIgd2lkdGg9IjU2IiBoZWlnaHQ9IjQ0IiByeD0iNiIgZmlsbD0iI2JmZTVlZiIvPgo8ZWxsaXBzZSBjeD0iMTAwIiBjeT0iMTc4IiByeD0iNDQiIHJ5PSI2IiBmaWxsPSIjMDAwMDAwMTQiLz48L3N2Zz4="
+ }
+]
