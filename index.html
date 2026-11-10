@@ -124,7 +124,7 @@ let pending = false;     // owner has changes not yet uploaded
 let loading = true;
 let loadError = "";
 let cart = {};
-let view = "shop";       // shop | cart | checkout | done | newproduct
+let view = "shop";       // shop | cart | checkout | done | newproduct | pin | token
 let form = { name: "", phone: "", address: "", notes: "" };
 let draft = { name: "", price: "", descr: "", image: "" };
 let order = null;
@@ -135,7 +135,11 @@ try { cart = JSON.parse(recall("cart") || "{}"); } catch (e) { cart = {}; }
 try { ownerList = JSON.parse(recall("ownerList") || "[]"); } catch (e) { ownerList = []; }
 const myTelegramId = tg && tg.initDataUnsafe && tg.initDataUnsafe.user ? tg.initDataUnsafe.user.id : null;
 const canOwner = () => (myTelegramId !== null && CONFIG.ownerTelegramIds.includes(myTelegramId)) || recall("ownerUnlocked") === "1";
-ownerMode = recall("ownerMode") === "1" && canOwner();
+
+// FIX 1: owner mode always starts OFF. It is never restored from storage.
+ownerMode = false;
+try { localStorage.removeItem("ownerMode"); } catch (e) {}
+
 pending = recall("ownerPending") === "1";
 let ghToken = recall("ghToken") || "";
 const saveCart = () => store("cart", JSON.stringify(cart));
@@ -350,10 +354,13 @@ function unlock() {
 }
 
 /* ---------- owner tools ---------- */
+// FIX 2: leaving owner mode also removes the saved unlock, so it is fully locked again.
 function setOwner(on) {
   if (on && !canOwner()) return;
   ownerMode = on;
-  store("ownerMode", on ? "1" : "0");
+  if (!on) {
+    try { localStorage.removeItem("ownerUnlocked"); } catch (e) {}
+  }
   if (on && !ownerList.length && !pending) { ownerList = clone(published); persistOwner(); }
   render();
 }
